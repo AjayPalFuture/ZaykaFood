@@ -9,7 +9,7 @@ const dispatch=useDispatch()
 useEffect(()=>{
  const fetchUsers=async ()=>{
     const result=await axios.get(`${serverUrl}/api/user/current`,{withCredentials:true})
-     console.log(result.data)
+    //  console.log(result.data)
      dispatch(setUserData(result.data))
  }
  fetchUsers() 

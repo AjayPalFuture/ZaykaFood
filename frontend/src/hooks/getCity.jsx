@@ -16,11 +16,11 @@ function getCity() {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
 
-        console.log(`Latitude: ${lat}, Longitude: ${lon}`);
+        // console.log(`Latitude: ${lat}, Longitude: ${lon}`);
 
         try {
           // 🔑 apna Geoapify API key yaha lagao
-          const apiKey = "812d749999de462e9df7ca070383975b";
+          const apiKey = import.meta.env.VITE_GEOAPIKEY;
 
           const response = await fetch(
             `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=${apiKey}`

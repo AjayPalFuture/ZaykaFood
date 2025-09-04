@@ -15,18 +15,42 @@ dotenv.config()
 const port = process.env.PORT || 5000
 const app=express()
 const server=http.createServer(app)
-const io=new Server(server,{
-     cors: {
-    origin: "https://neon-zabaione-eb4c13.netlify.app",// production में specific domain डालना
+// const io=new Server(server,{
+//      cors: {
+//     origin: "https://neon-zabaione-eb4c13.netlify.app",// production में specific domain डालना
+//     methods: ["GET", "POST"],
+//     credentials: true  
+//   }
+// })
+// app.set("io", io);
+// app.use(cors({
+//     origin:"https://neon-zabaione-eb4c13.netlify.app",
+//     credentials:true
+// }))
+
+// Allowed origins
+const allowedOrigins = [
+  "http://localhost:5173",                // local frontend
+  "https://neon-zabaione-eb4c13.netlify.app" // production frontend
+];
+
+const io = new Server(server, {
+  cors: {
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
-    credentials: true  
-  }
-})
+    credentials: true,
+  },
+});
+
 app.set("io", io);
-app.use(cors({
-    origin:"https://neon-zabaione-eb4c13.netlify.app",
-    credentials:true
-}))
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
+
 app.use(express.json())
 app.use(cookieParser())
 app.use("/api/auth",authRouter)

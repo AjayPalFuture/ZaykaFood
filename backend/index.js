@@ -17,14 +17,14 @@ const app=express()
 const server=http.createServer(app)
 const io=new Server(server,{
      cors: {
-    origin: "http://localhost:5173",// production में specific domain डालना
+    origin: "https://neon-zabaione-eb4c13.netlify.app",// production में specific domain डालना
     methods: ["GET", "POST"],
     credentials: true  
   }
 })
 app.set("io", io);
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://neon-zabaione-eb4c13.netlify.app",
     credentials:true
 }))
 app.use(express.json())

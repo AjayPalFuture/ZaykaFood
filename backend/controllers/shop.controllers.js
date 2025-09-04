@@ -9,6 +9,7 @@ export const getAllShops=async (req,res) => {
         }
         return
     } catch (error) {
+        console.log(error)
         return res.status(500).json({message:`get all shops error ${error}`})
     }
 }
@@ -36,6 +37,7 @@ image=await uploadOnCloudinary(req.file.path)
         await shop.populate("owner")
        return res.status(200).json(shop) 
     } catch (error) {
+        console.log(error)
         return res.status(500).json({message:`add shop error ${error}`})
     }
 }
@@ -50,6 +52,7 @@ return res.status(200).json(shop)
         }
         return null
     } catch (error) {
+        console.log(error)
          return res.status(500).json({message:`get shop error ${error}`})
     }
 }
@@ -69,6 +72,7 @@ export const getShopsByCity=async (req,res)=>{
    
     return res.status(200).json(shops);
     } catch (error) {
+        console.log(error)
          return res.status(500).json({message:`get shop by city error ${error}`})
     }
 }
@@ -83,6 +87,7 @@ try {
     return res.status(200).json(shop);
 
 } catch (error) {
+    console.log(error)
     return res.status(500).json({message:`get shop by id error ${error}`})
 }
 }

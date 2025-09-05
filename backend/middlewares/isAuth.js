@@ -3,6 +3,8 @@
     try {
         const token=req.cookies.token
         if(!token){
+            console.log("token not found")
+            alert("token not found")
             return res.status(400).json({message:"token is not found"})
         }
 

@@ -17,6 +17,7 @@ export const getAllShops=async (req,res) => {
 export const addShop=async (req,res)=>{
     try {
         const {name,city,state,address}=req.body
+        console.log(req.body)
         let image;
         if(req.file){
 image=await uploadOnCloudinary(req.file.path)

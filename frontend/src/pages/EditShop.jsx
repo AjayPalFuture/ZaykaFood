@@ -185,17 +185,29 @@ export default function EditShop() {
       // ✅ Add JWT token here (replace userData.token with actual token)
       const token = userData?.token; 
 
-      const result = await axios.post(
-        `${serverUrl}/api/shop/editshop`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials: true, // agar cookie-based auth use ho raha ho
-        }
-      );
+    //   const result = await axios.post(
+    //     `${serverUrl}/api/shop/editshop`,
+    //     formData,
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //       withCredentials: true, // agar cookie-based auth use ho raha ho
+    //     }
+    //   );
+
+    const result = await axios.post(
+  `${serverUrl}/api/shop/editshop`,
+  formData,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`, // ✅ token send ho raha
+      "Content-Type": "multipart/form-data",
+    },
+    withCredentials: true, // agar backend cookie bhi check karta hai
+  }
+);
 
       dispatch(setShop(result.data));
       console.log("Shop updated:", result.data);
